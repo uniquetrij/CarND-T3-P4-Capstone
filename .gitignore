@@ -1,6 +1,2 @@
-*.py[cod]
-
-build
-devel
-
-profile.tmp
+.idea/
+ros/src/venv/
