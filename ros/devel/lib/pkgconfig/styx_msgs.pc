@@ -1,0 +1,8 @@
+prefix=/home/anupam/udacity/trijeet/CarND-T3-P4-Capstone/ros/devel
+
+Name: styx_msgs
+Description: Description of styx_msgs
+Version: 0.0.0
+Cflags: -I/home/anupam/udacity/trijeet/CarND-T3-P4-Capstone/ros/devel/include
+Libs: -L/home/anupam/udacity/trijeet/CarND-T3-P4-Capstone/ros/devel/lib 
+Requires: 
