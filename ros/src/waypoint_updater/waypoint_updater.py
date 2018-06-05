@@ -3,6 +3,7 @@
 import numpy as np
 import rospy
 from geometry_msgs.msg import PoseStamped
+from std_msgs.msg import Int32
 from styx_msgs.msg import Lane, Waypoint
 from scipy.spatial import KDTree
 
@@ -24,7 +25,7 @@ TODO (for Yousuf and Aaron): Stopline location for each traffic light.
 '''
 
 LOOKAHEAD_WPS = 200  # Number of waypoints we will publish. You can change this number
-MAX_DECEL = .5
+MAX_DECEL = 0.5
 
 
 class WaypointUpdater(object):
@@ -37,11 +38,11 @@ class WaypointUpdater(object):
         self.stopline_wp_idx = -1
         self.waypoints_2d = None
         self.waypoint_tree = None
-        self.base_waypoints=None
+        # self.base_waypoints=None
 
         rospy.Subscriber('/current_pose', PoseStamped, self.pose_cb)
         rospy.Subscriber('/base_waypoints', Lane, self.waypoints_cb)
-        rospy.Subscriber('/traffic_waypoint', Waypoint, self.traffic_cb)
+        rospy.Subscriber('/traffic_waypoint', Int32, self.traffic_cb)
 
         # TODO: Add a subscriber for /traffic_waypoint and /obstacle_waypoint below
         self.final_waypoints_pub = rospy.Publisher('final_waypoints', Lane, queue_size=1)
