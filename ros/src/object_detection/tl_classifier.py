@@ -11,8 +11,8 @@ Original file is located at
 
 import os
 os.chdir('models/research/')
-os.popen('apt install protobuf-compiler')
-os.popen("protoc object_detection/protos/*.proto --python_out=.")
+os.system('apt install protobuf-compiler')
+os.system('protoc object_detection/protos/*.proto --python_out=.')
 os.chdir('object_detection/')
 
 import numpy as np
@@ -171,10 +171,12 @@ class classifier:
 # !wget https://cdn-images-1.medium.com/max/800/1*lHCzOcapHKRqfwd-O1dcLw.jpeg -O ./test_images/traffic_y.jpg
 # !wget https://cdn-images-1.medium.com/max/800/1*AcigwfSCTELcCOp912IV2w.jpeg -O ./test_images/traffic_r.jpg
 
-cf = classifier()
+if __name__ == '__main__':
 
-cf.detect(Image.open('./test_images/traffic_r.jpg'))
+    cf = classifier()
 
-cf.detect(Image.open('./test_images/traffic_g.jpg'))
+    cf.detect(Image.open('./test_images/traffic_r.jpeg'))
 
-cf.detect(Image.open('./test_images/traffic_y.jpg'))
+    cf.detect(Image.open('./test_images/traffic_g.jpeg'))
+
+    cf.detect(Image.open('./test_images/traffic_y.jpeg'))
