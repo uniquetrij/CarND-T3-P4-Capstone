@@ -141,7 +141,7 @@ class TLDetector(object):
         """
         # For testing just return the light state
 
-        return light.state
+        # return light.state
 
         if(not self.has_image):
             self.prev_light_loc = None
