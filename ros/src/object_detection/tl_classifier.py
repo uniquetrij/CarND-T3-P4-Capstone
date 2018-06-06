@@ -10,10 +10,18 @@ Original file is located at
 # !git clone https://github.com/tensorflow/models.git
 
 import os
-os.chdir('/content/CarND-T3-P4-Capstone/ros/src/')
-os.system('apt install protobuf-compiler')
-os.system('protoc object_detection/protos/*.proto --python_out=.')
-os.chdir('object_detection/')
+
+os.chdir('./src/')
+
+# if not os.path.exists('./protoc-3.3.0-linux-x86_64.zip'):
+#     os.system('curl -OL https://github.com/google/protobuf/releases/download/v3.3.0/protoc-3.3.0-linux-x86_64.zip')
+#     os.system('unzip protoc-3.3.0-linux-x86_64.zip -d protoc3')
+#     os.system('mkdi')
+#     os.system('mv protoc3/bin/* ./local/bin/')
+#     os.system('mv protoc3/include/* ./local/include/')
+#     os.system('protoc object_detection/protos/*.proto --python_out=.')
+
+os.chdir('./object_detection/')
 
 import numpy as np
 import os
@@ -25,7 +33,7 @@ import zipfile
 
 from collections import defaultdict
 from io import StringIO
-from matplotlib import pyplot as plt
+# from matplotlib import pyplot as plt
 from PIL import Image
 
 # This is needed since the notebook is stored in the object_detection folder.
@@ -39,6 +47,8 @@ if tf.__version__ < '1.4.0':
 from utils import label_map_util
 from utils import visualization_utils as vis_util
 
+os.chdir('../../')
+
 class classifier:
     # What model to download.
     MODEL_NAME = 'ssd_mobilenet_v1_coco_2017_11_17'
@@ -47,7 +57,7 @@ class classifier:
     # Path to frozen detection graph. This is the actual model that is used for the object detection.
     PATH_TO_CKPT = MODEL_NAME + '/frozen_inference_graph.pb'
     # List of the strings that is used to add correct label for each box.
-    PATH_TO_LABELS = os.path.join('data', 'mscoco_label_map.pbtxt')
+    PATH_TO_LABELS = os.path.join('./src/object_detection/data', 'mscoco_label_map.pbtxt')
 
     NUM_CLASSES = 90
 
@@ -55,8 +65,8 @@ class classifier:
     IMAGE_SIZE = (12, 8)
 
     def __init__(self):
-        os.popen("protoc ./src/object_detection/protos/*.proto --python_out=.")
-        sys.path.append("..")
+        # os.popen("protoc ./src/object_detection/protos/*.proto --python_out=.")
+        # sys.path.append("..")
         if tf.__version__ < '1.4.0':
             raise ImportError('Please upgrade your tensorflow installation to v1.4.* or later!')
 
@@ -157,8 +167,8 @@ class classifier:
       img_data = sess.run(cropped_image)
       sess.close()
 
-      plt.figure(figsize=self.IMAGE_SIZE)
-      plt.imshow(img_data)
+      # plt.figure(figsize=self.IMAGE_SIZE)
+      # plt.imshow(img_data)
 
       r = img_data[:, :, 0] > 200
       g = img_data[:, :, 1] > 200
@@ -173,8 +183,8 @@ class classifier:
 
 cf = classifier()
 
-cf.detect(Image.open('./test_images/traffic_r.jpeg'))
+cf.detect(Image.open('./src/object_detection/test_images/traffic_r.jpeg'))
 
-cf.detect(Image.open('./test_images/traffic_g.jpeg'))
-
-cf.detect(Image.open('./test_images/traffic_y.jpeg'))
+cf.detect(Image.open('./src/object_detection/test_images/traffic_g.jpeg'))
+#
+cf.detect(Image.open('./src/object_detection/test_images/traffic_y.jpeg'))
