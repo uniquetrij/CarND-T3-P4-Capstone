@@ -70,13 +70,13 @@ class classifier:
         if tf.__version__ < '1.4.0':
             raise ImportError('Please upgrade your tensorflow installation to v1.4.* or later!')
 
-        opener = urllib.request.URLopener()
-        opener.retrieve(self.DOWNLOAD_BASE + self.MODEL_FILE, self.MODEL_FILE)
-        tar_file = tarfile.open(self.MODEL_FILE)
-        for file in tar_file.getmembers():
-          file_name = os.path.basename(file.name)
-          if 'frozen_inference_graph.pb' in file_name:
-            tar_file.extract(file, os.getcwd())
+        # opener = urllib.request.URLopener()
+        # opener.retrieve(self.DOWNLOAD_BASE + self.MODEL_FILE, self.MODEL_FILE)
+        # tar_file = tarfile.open(self.MODEL_FILE)
+        # for file in tar_file.getmembers():
+        #   file_name = os.path.basename(file.name)
+        #   if 'frozen_inference_graph.pb' in file_name:
+        #     tar_file.extract(file, os.getcwd())
 
         self.detection_graph = tf.Graph()
         with self.detection_graph.as_default():
