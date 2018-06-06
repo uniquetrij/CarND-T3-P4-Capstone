@@ -41,7 +41,7 @@ sys.path.append("..")
 from object_detection.utils import ops as utils_ops
 
 if tf.__version__ < '1.4.0':
-    os.system('pip install --upgrade tensorflow')
+    os.system('pip install --upgrade tensorflow-gpu')
   # raise ImportError('Please upgrade your tensorflow installation to v1.4.* or later!')
 
 # %matplotlib inline
