@@ -46,7 +46,7 @@ if tf.__version__ < '1.4.0':
 
 # %matplotlib inline
 from utils import label_map_util
-from utils import visualization_utils as vis_util
+# from utils import visualization_utils as vis_util
 
 os.chdir('../../')
 
