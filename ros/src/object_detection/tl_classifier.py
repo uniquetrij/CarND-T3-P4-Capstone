@@ -41,7 +41,8 @@ sys.path.append("..")
 from object_detection.utils import ops as utils_ops
 
 if tf.__version__ < '1.4.0':
-  raise ImportError('Please upgrade your tensorflow installation to v1.4.* or later!')
+    os.system('pip install --upgrade tensorflow')
+  # raise ImportError('Please upgrade your tensorflow installation to v1.4.* or later!')
 
 # %matplotlib inline
 from utils import label_map_util
