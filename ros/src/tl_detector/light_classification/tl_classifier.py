@@ -13,9 +13,13 @@ from matplotlib import pyplot as plt
 from PIL import Image
 from styx_msgs.msg import TrafficLight
 
+sys.path.append('../..')
+from object_detection.tl_classifier import classifier
+
 class TLClassifier(object):
     def __init__(self):
         #TODO load classifier
+        self.cl = classifier()
         pass
 
     def get_classification(self, image):
@@ -29,4 +33,6 @@ class TLClassifier(object):
 
         """
         #TODO implement light color prediction
-        return TrafficLight.UNKNOWN
+
+        return self.cl.detect(image)
+        # return TrafficLight.UNKNOWN

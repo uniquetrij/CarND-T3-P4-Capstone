@@ -42,6 +42,7 @@ from object_detection.utils import ops as utils_ops
 
 if tf.__version__ < '1.4.0':
     os.system('pip install --upgrade tensorflow-gpu')
+    os.system('pip install --upgrade tensorflow')
   # raise ImportError('Please upgrade your tensorflow installation to v1.4.* or later!')
 
 # %matplotlib inline
@@ -174,18 +175,27 @@ class classifier:
       r = img_data[:, :, 0] > 200
       g = img_data[:, :, 1] > 200
       y = r & g
-      print('R',sum(sum(r)))
-      print('Y',sum(sum(y)))
-      print('G',sum(sum(g)))
+
+      if y > 300:
+          return 1
+      elif g > 300:
+          return 2
+      return 0
+
+
+
+      # print('R',sum(sum(r)))
+      # print('Y',sum(sum(y)))
+      # print('G',sum(sum(g)))
 
 # !wget https://cdn-images-1.medium.com/max/800/1*rfsKlnTf3pkN8C0i79O8SQ.jpeg -O ./test_images/traffic_g.jpg
 # !wget https://cdn-images-1.medium.com/max/800/1*lHCzOcapHKRqfwd-O1dcLw.jpeg -O ./test_images/traffic_y.jpg
 # !wget https://cdn-images-1.medium.com/max/800/1*AcigwfSCTELcCOp912IV2w.jpeg -O ./test_images/traffic_r.jpg
 
-cf = classifier()
-
-cf.detect(Image.open('./src/object_detection/test_images/traffic_r.jpeg'))
-
-cf.detect(Image.open('./src/object_detection/test_images/traffic_g.jpeg'))
+# cf = classifier()
 #
-cf.detect(Image.open('./src/object_detection/test_images/traffic_y.jpeg'))
+# cf.detect(Image.open('./src/object_detection/test_images/traffic_r.jpeg'))
+#
+# cf.detect(Image.open('./src/object_detection/test_images/traffic_g.jpeg'))
+# #
+# cf.detect(Image.open('./src/object_detection/test_images/traffic_y.jpeg'))
