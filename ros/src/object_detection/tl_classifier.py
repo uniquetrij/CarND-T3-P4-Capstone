@@ -11,7 +11,10 @@ Original file is located at
 
 import os
 
-os.chdir('./src/')
+import rospy
+
+
+# os.chdir('./src/')
 
 # if not os.path.exists('./protoc-3.3.0-linux-x86_64.zip'):
 #     os.system('curl -OL https://github.com/google/protobuf/releases/download/v3.3.0/protoc-3.3.0-linux-x86_64.zip')
@@ -21,7 +24,7 @@ os.chdir('./src/')
 #     os.system('mv protoc3/include/* ./local/include/')
 #     os.system('protoc object_detection/protos/*.proto --python_out=.')
 
-os.chdir('./object_detection/')
+# os.chdir('./object_detection/')
 
 import numpy as np
 import os
@@ -41,7 +44,7 @@ sys.path.append("..")
 from object_detection.utils import ops as utils_ops
 
 if tf.__version__ < '1.4.0':
-    os.system('pip install --upgrade tensorflow-gpu')
+    # os.system('pip install --upgrade tensorflow-gpu')
     os.system('pip install --upgrade tensorflow')
   # raise ImportError('Please upgrade your tensorflow installation to v1.4.* or later!')
 
@@ -49,17 +52,18 @@ if tf.__version__ < '1.4.0':
 from utils import label_map_util
 # from utils import visualization_utils as vis_util
 
-os.chdir('../../')
+# os.chdir('../../')
 
 class classifier:
+
     # What model to download.
-    MODEL_NAME = 'ssd_mobilenet_v1_coco_2017_11_17'
+    MODEL_NAME = '../object_detection/ssd_mobilenet_v1_coco_2017_11_17'
     MODEL_FILE = MODEL_NAME + '.tar.gz'
     DOWNLOAD_BASE = 'http://download.tensorflow.org/models/object_detection/'
     # Path to frozen detection graph. This is the actual model that is used for the object detection.
     PATH_TO_CKPT = MODEL_NAME + '/frozen_inference_graph.pb'
     # List of the strings that is used to add correct label for each box.
-    PATH_TO_LABELS = os.path.join('./src/object_detection/data', 'mscoco_label_map.pbtxt')
+    PATH_TO_LABELS = os.path.join('../object_detection/data', 'mscoco_label_map.pbtxt')
 
     NUM_CLASSES = 90
 
@@ -71,6 +75,10 @@ class classifier:
         # sys.path.append("..")
         if tf.__version__ < '1.4.0':
             raise ImportError('Please upgrade your tensorflow installation to v1.4.* or later!')
+
+        # rospy.loginfo("***************************************")
+        # rospy.loginfo(os.getcwd())
+        # rospy.loginfo("***************************************")
 
         # opener = urllib.request.URLopener()
         # opener.retrieve(self.DOWNLOAD_BASE + self.MODEL_FILE, self.MODEL_FILE)
@@ -176,9 +184,9 @@ class classifier:
       g = img_data[:, :, 1] > 200
       y = r & g
 
-      if y > 300:
+      if sum(sum(y)) > 300:
           return 1
-      elif g > 300:
+      elif sum(sum(g)) > 300:
           return 2
       return 0
 

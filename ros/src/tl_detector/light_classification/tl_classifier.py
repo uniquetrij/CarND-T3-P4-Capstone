@@ -1,6 +1,8 @@
 import os
 import numpy as np
 import os
+import cv2
+import rospy
 import six.moves.urllib as urllib
 import sys
 import tarfile
@@ -15,18 +17,21 @@ from styx_msgs.msg import TrafficLight
 
 import time
 
-sys.path.append('../..')
+rospy.logerr(os.getcwd())
+sys.path.append('..')
 from object_detection.tl_classifier import classifier
+
+
 
 class TLClassifier(object):
     def __init__(self):
         #TODO load classifier
         self.cl = classifier()
-        self.t = time.time()
+        self.t = 0.0
         self.tl = TrafficLight.UNKNOWN
         pass
 
-    def get_classification(self, image):
+    def get_classification(self, image, light=TrafficLight.UNKNOWN):
         """Determines the color of the traffic light in the image
 
         Args:
@@ -40,7 +45,11 @@ class TLClassifier(object):
 
         if time.time() - self.t > 5 :
             self.t = time.time()
+            image = Image.fromarray(image)
             self.tl = self.cl.detect(image)
+            rospy.loginfo(self.tl)
 
-        return self.tl
+        return light
+
+        # return light
         # return TrafficLight.UNKNOWN

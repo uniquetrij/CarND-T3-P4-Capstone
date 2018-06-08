@@ -1,8 +1,8 @@
-prefix=/home/anupam/udacity/trijeet/CarND-T3-P4-Capstone/ros/install
+prefix=/home/anupam/Desktop/CarND-T3-P4-Capstone/ros/install
 
 Name: camera_info_publisher
 Description: Description of camera_info_publisher
 Version: 0.0.0
 Cflags: 
-Libs: -L/home/anupam/udacity/trijeet/CarND-T3-P4-Capstone/ros/install/lib 
+Libs: -L/home/anupam/Desktop/CarND-T3-P4-Capstone/ros/install/lib 
 Requires: 

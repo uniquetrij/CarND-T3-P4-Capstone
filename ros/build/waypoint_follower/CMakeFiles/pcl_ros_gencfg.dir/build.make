@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/anupam/udacity/trijeet/CarND-T3-P4-Capstone/ros/src
+CMAKE_SOURCE_DIR = /home/anupam/Desktop/CarND-T3-P4-Capstone/ros/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/anupam/udacity/trijeet/CarND-T3-P4-Capstone/ros/build
+CMAKE_BINARY_DIR = /home/anupam/Desktop/CarND-T3-P4-Capstone/ros/build
 
 # Utility rule file for pcl_ros_gencfg.
 
@@ -63,10 +63,10 @@ waypoint_follower/CMakeFiles/pcl_ros_gencfg.dir/build: pcl_ros_gencfg
 .PHONY : waypoint_follower/CMakeFiles/pcl_ros_gencfg.dir/build
 
 waypoint_follower/CMakeFiles/pcl_ros_gencfg.dir/clean:
-	cd /home/anupam/udacity/trijeet/CarND-T3-P4-Capstone/ros/build/waypoint_follower && $(CMAKE_COMMAND) -P CMakeFiles/pcl_ros_gencfg.dir/cmake_clean.cmake
+	cd /home/anupam/Desktop/CarND-T3-P4-Capstone/ros/build/waypoint_follower && $(CMAKE_COMMAND) -P CMakeFiles/pcl_ros_gencfg.dir/cmake_clean.cmake
 .PHONY : waypoint_follower/CMakeFiles/pcl_ros_gencfg.dir/clean
 
 waypoint_follower/CMakeFiles/pcl_ros_gencfg.dir/depend:
-	cd /home/anupam/udacity/trijeet/CarND-T3-P4-Capstone/ros/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/anupam/udacity/trijeet/CarND-T3-P4-Capstone/ros/src /home/anupam/udacity/trijeet/CarND-T3-P4-Capstone/ros/src/waypoint_follower /home/anupam/udacity/trijeet/CarND-T3-P4-Capstone/ros/build /home/anupam/udacity/trijeet/CarND-T3-P4-Capstone/ros/build/waypoint_follower /home/anupam/udacity/trijeet/CarND-T3-P4-Capstone/ros/build/waypoint_follower/CMakeFiles/pcl_ros_gencfg.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/anupam/Desktop/CarND-T3-P4-Capstone/ros/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/anupam/Desktop/CarND-T3-P4-Capstone/ros/src /home/anupam/Desktop/CarND-T3-P4-Capstone/ros/src/waypoint_follower /home/anupam/Desktop/CarND-T3-P4-Capstone/ros/build /home/anupam/Desktop/CarND-T3-P4-Capstone/ros/build/waypoint_follower /home/anupam/Desktop/CarND-T3-P4-Capstone/ros/build/waypoint_follower/CMakeFiles/pcl_ros_gencfg.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : waypoint_follower/CMakeFiles/pcl_ros_gencfg.dir/depend
 
