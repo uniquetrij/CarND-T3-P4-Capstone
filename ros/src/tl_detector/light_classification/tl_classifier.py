@@ -43,13 +43,15 @@ class TLClassifier(object):
         """
         #TODO implement light color prediction
 
-        if time.time() - self.t > 5 :
+        if time.time() - self.t > 10 :
             self.t = time.time()
             image = Image.fromarray(image)
-            self.tl = self.cl.detect(image)
-            rospy.loginfo(self.tl)
+            tl = self.cl.detect(image)
+            if tl:
+                self.tl = tl
+            rospy.loginfo(tl)
 
-        return light
+        return self.tl
 
         # return light
         # return TrafficLight.UNKNOWN

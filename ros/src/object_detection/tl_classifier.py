@@ -165,10 +165,13 @@ class classifier:
       boxes = [i for i, x in enumerate(boxes) if x]
       boxes = output_dict['detection_boxes'][boxes]
 
-      ymin = boxes[0,0]
-      xmin = boxes[0,1]
-      ymax = boxes[0,2]
-      xmax = boxes[0,3]
+      try:
+          ymin = boxes[0,0]
+          xmin = boxes[0,1]
+          ymax = boxes[0,2]
+          xmax = boxes[0,3]
+      except:
+          return None
 
       (im_width, im_height) = image.size
       (xminn, xmaxx, yminn, ymaxx) = (xmin * im_width, xmax * im_width, ymin * im_height, ymax * im_height)
